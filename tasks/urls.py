@@ -45,6 +45,8 @@ urlpatterns = [
     path('', views.task_list, name='task_list'),
     path('home/', views.home, name='home'),
     path('index/', views.index, name='index'),
+    path('try1/', views.try1, name='try1'),
+    # path('try2/', views.try2, name='try2'),
     # Create a task
     path('create/', views.task_create, name='task_create'),
 
@@ -54,6 +56,7 @@ urlpatterns = [
 
     # Update a task
     re_path(r'^(?P<pk>\d+)/update/$', views.task_update, name='task_update'),
+    # path('update/', views.task_update, name='task_update'),
 
     # Delete a task
     re_path(r'^(?P<pk>\d+)/delete/$', views.task_delete, name='task_delete'),

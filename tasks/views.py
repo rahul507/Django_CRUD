@@ -82,6 +82,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from .models import Task
 from .forms import TaskForm
+from .forms import MyForm
+
 
 # Create your views here.
 
@@ -96,6 +98,32 @@ def task_create(request):
         form = TaskForm()
 
     return render(request, "tasks/task_form.html", { "form": form, })
+def try1(request):
+    if request.method == "POST":
+        form = MyForm(request.POST)
+        if form.is_valid():
+            email=form.cleaned_data['driver_email']
+            number=form.cleaned_data['driver_number']
+            print(email)
+            entries = Task.objects.filter(email=email,phone=number)
+            if(entries):
+                print(entries)
+                task_obj = get_object_or_404(Task, email=email,phone=number)
+                print(task_obj)
+                task_obj.delete()
+                # entries.delete()
+                return redirect(reverse("tasks:task_list"))
+                
+            else:
+                
+                form=MyForm()
+            
+    else:
+        form = MyForm()
+
+    return render(request, "try.html", { "form": form, })
+
+
 
 
 # Retrieve task list
@@ -107,6 +135,7 @@ def index(request):
     return render(request, "index.html")
 def home(request):
     return render(request, "home.html")
+
 
 
 # Retrieve a single task
@@ -128,6 +157,7 @@ def task_update(request, pk):
         form = TaskForm(instance=task_obj)
 
     return render(request, "tasks/task_form.html", { "form": form, "object": task_obj})
+
 
 
 # Delete a single task
