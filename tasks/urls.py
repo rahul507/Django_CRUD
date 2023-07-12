@@ -42,13 +42,16 @@ app_name = 'tasks'
 urlpatterns = [
 
     # Retrieve task list
-    path('', views.task_list, name='task_list'),
+    path('portal/', views.task_list, name='task_list'),
     path('home/', views.home, name='home'),
-    path('index/', views.index, name='index'),
+    path('', views.index, name='index'),
     path('try1/', views.try1, name='try1'),
     # path('try2/', views.try2, name='try2'),
     # Create a task
     path('create/', views.task_create, name='task_create'),
+    path("register/", views.register_request, name="register"),
+    path("login/", views.login_request, name="login"),
+    path("logout", views.logout_request, name= "logout"),
 
 
     # Retrieve single task object
