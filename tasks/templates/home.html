@@ -86,9 +86,9 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliquat enim ad minim veniam, quis nostrud exercit
-                  </p>
                 </div>
-                <a href="{% url 'tasks:task_create' %}">
+              {% if user.is_authenticated %}
+                <a href="/portal">
                 <button class="page1-learn button">
                   <span class="page1-text">Click Here</span>
                   <img
@@ -98,6 +98,18 @@
                   />
                 </button>
               </a>
+              {% else %}
+              <a href="/login">
+                <button class="page1-learn button">
+                  <span class="page1-text">Click Here</span>
+                  <img
+                    alt="image"
+                    src="{% static 'public/Icons/arrow.svg' %}"
+                    class="page1-image"
+                  />
+                </button>
+              </a>
+              {% endif %}
               </div>
             </div>
             <div class="page1-card1">
@@ -118,14 +130,16 @@
                     ullamco laboris nisi
                   </p>
                 </div>
+                <a href='/update'>
                 <button class="page1-learn1 button">
-                  <span class="page1-text1">Learn more</span>
+                  <span class="page1-text1">Click Here</span>
                   <img
                     alt="image"
                     src="{% static 'public/Icons/arrow-2.svg' %}"
                     class="page1-image1"
                   />
                 </button>
+              </a>
               </div>
             </div>
           </div>
@@ -150,14 +164,17 @@
                   <span>exercitation ullamco laboris nisi</span>
                 </p>
               </div>
+              <a href='/delete'>
+
               <button class="page1-learn2 button">
-                <span class="page1-text5">Learn more</span>
+                <span class="page1-text5">Click here</span>
                 <img
                   alt="image"
                   src="{% static 'public/Icons/arrow-2.svg' %}"
                   class="page1-image2"
                 />
               </button>
+            </a>
             </div>
           </div>
         </section>
