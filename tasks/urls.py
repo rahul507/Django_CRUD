@@ -46,7 +46,8 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('', views.index, name='index'),
     path('try1/', views.try1, name='try1'),
-    # path('try2/', views.try2, name='try2'),
+    path('try2/', views.try2, name='try2'),
+    path('save/', views.save, name='save'),
     # Create a task
     path('create/', views.task_create, name='task_create'),
     path("register/", views.register_request, name="register"),

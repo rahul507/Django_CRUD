@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Task List</title>
+    <title>Driver List</title>
 </head>
 <body>
-<h3>Task List</h3>
+<h3>Driver List</h3>
 {% for task in tasks %}
     <p>{{ forloop.counter }}. {{ task.name }} - {{ task.get_status_display }}
         (<a href="{% url 'tasks:task_update' task.id %}">Update</a> |
@@ -13,6 +13,6 @@
     </p>
 {% endfor %}
 
-<p> <a href="{% url 'tasks:task_create' %}"> + Add A New Task</a></p>
+<p> <a href="{% url 'tasks:task_create' %}"> + Add A New Driver</a></p>
 </body>
 </html>

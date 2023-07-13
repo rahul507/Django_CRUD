@@ -103,6 +103,18 @@ def task_create(request):
         form = TaskForm()
 
     return render(request, "tasks/task_form.html", { "form": form, })
+def save(request):
+    if request.method == 'POST':
+            task_obj=request.POST.get('taskk')
+            print(task_obj)
+            form = TaskForm(instance=Task.objects.get(pk=task_obj), data=request.POST)
+            if form.is_valid():
+                form.save()
+                return render(request,'home.html')
+            else:
+                form = TaskForm(instance=task_obj)
+
+    return render(request, "tasks/task_up.html", { "form": form, })
 def try1(request):
     if request.method == "POST":
         form = MyForm(request.POST)
@@ -127,6 +139,31 @@ def try1(request):
         form = MyForm()
 
     return render(request, "delete.html", { "form": form, })
+
+
+def try2(request):
+    if request.method == "POST":
+        form = MyForm(request.POST)
+        if form.is_valid():
+            email=form.cleaned_data['driver_email']
+            password=form.cleaned_data['driver_password']
+            print(email)
+            task_obj = get_object_or_404(Task, email=email,password=password)
+            form = TaskForm(instance=task_obj)
+
+        return render(request, "tasks/task_up.html", { "form": form, "object": task_obj})
+    else:
+        form = MyForm()
+
+    return render(request, "update.html", { "form": form, })
+
+    
+    
+
+
+
+
+
 
 
 
